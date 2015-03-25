@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<title>iGapo</title>       
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		
+		<!--Bootstrap Css-->
+		<link rel="stylesheet" href="themes/Bootstrap.css">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+		
+		<!--Fonts-->
+		<link href='http://fonts.googleapis.com/cssâ€¦' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		</script>
+		
+		<!--Js-->
+		<script type="text/javascript">
+		var markers = [
+		<!--Parks-->
+		['Ulo ng Apo Monument', 14.838847, 120.284371],
+		['Marikit Park', 14.837294, 120.283379],
+		['Oval', 14.832751, 120.282670],
+		['Rizal Triangle', 14.8416643, 120.28705620000005],
+		['Olongapo City Museum', 14.836892, 120.282811],
+		['Gordon Heights Park', 14.855535, 120.290518],
+		['Greenwoods Park', 14.824463, 120.284026]
+		];
+		<!--Function-->
+		function Parks() {
+		var myOptions = {
+			disableDefaultUI: true,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: false
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		var infowindow = new google.maps.InfoWindow();
+		var marker, i;
+		var bounds = new google.maps.LatLngBounds();
+		
+		for (i = 0; i < markers.length; i++) {
+			var pos = new google.maps.LatLng(markers[i][1], markers[i][2]);
+			bounds.extend(pos);
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+			google.maps.event.addListener(marker, 'click', (function(marker, i){
+				return function() {
+					infowindow.setContent(markers[i][0]);
+					infowindow.open(map, marker);
+				}	
+			})(marker, i));
+		}
+		map.fitBounds(bounds);
+	}
+	
+	var markers1 = [
+		<!--Fast Foods-->
+		['Ricos Restaurant Corpuz Street',14.831165,120.2784698],
+		['Ricos Fastfood Restaurant New Banicain',14.8302006,120.2783299,],
+		['Mcdo Rizal Avenue',14.8449058,120.2907097],
+		['McDonalds Olongapo Rizal',14.8449369,120.2907483],
+		['McDonalds',14.8397921,120.2852921],
+		['Mcdo Magsaysay Drive',14.827189,120.282818],
+		['Jollibee magsaysay',14.8940373,120.3203919],
+		['Jollibee Rizal',14.8385069,120.2842705],
+		['Chowking Rizal Highway Subic Bay Freeport zone',14.8244361,120.2799065],
+		['Greenwich Olongapo',14.8390153,120.2842287],
+		['Sams Pizza',14.830075,120.2812875]
+	];
+	<!--Function-->
+	function FastFoods() {
+		var myOptions = {
+			disableDefaultUI: true,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: false
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		var infowindow = new google.maps.InfoWindow();
+		var marker, i;
+		var bounds = new google.maps.LatLngBounds();
+		
+		for (i = 0; i < markers1.length; i++) {
+			var pos = new google.maps.LatLng(markers1[i][1], markers1[i][2]);
+			bounds.extend(pos);
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+			google.maps.event.addListener(marker, 'click', (function(marker, i){
+				return function() {
+					infowindow.setContent(markers1[i][0]);
+					infowindow.open(map, marker);
+				}	
+			})(marker, i));
+		}
+		map.fitBounds(bounds);
+	}
+	
+		var markers2 = [
+		<!--Bars-->
+		['Gigz Super Club', 14.830872, 120.280821],
+		['Gigolo', 14.830830, 120.280869],
+		['Ambyanz Nightlife', 14.830723, 120.280986],
+		['Tropical Bay', 14.830621, 120.280827],
+		['Apozaga Bar', 14.830592, 120.281073],
+		['Willis Concert Bar', 14.828692, 120.282043]
+		];
+		<!--Function-->
+		function Bars() {
+		var myOptions = {
+			disableDefaultUI: true,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: false
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		var infowindow = new google.maps.InfoWindow();
+		var marker, i;
+		var bounds = new google.maps.LatLngBounds();
+		
+		for (i = 0; i < markers2.length; i++) {
+			var pos = new google.maps.LatLng(markers2[i][1], markers2[i][2]);
+			bounds.extend(pos);
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+			google.maps.event.addListener(marker, 'click', (function(marker, i){
+				return function() {
+					infowindow.setContent(markers2[i][0]);
+					infowindow.open(map, marker);
+				}	
+			})(marker, i));
+		}
+		map.fitBounds(bounds);
+	}
+	
+</script>
+</head>
+<body>
+
+<!-- ************* PAGE ONE ************* -->
+		<!--Page-->
+		<div data-role="page" id="page1" data-theme="e">
+			<div data-role="header" data-theme="d" data-position="inline">
+				<h1 data-icon="info">iGapo</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#page1" data-icon="home" data-transition="none">Home</a></li>
+						<li><a href="#page2" data-icon="star" data-transition="none">Places</a></li>
+						<li><a href="#page3" data-icon="search" data-transition="none">Maps</a></li>
+						<li><a href="assets/about.html" data-icon="info" data-transition="none">About</a></li>
+					</ul>
+				</div>
+			</div>
+                    <!--Content-->    
+			<div data-role="content" data-theme="c">
+         <style>
+                img{
+                    width: 100%;
+                    height: 50%;
+                    background-image: url('img/gapo.JPG');
+                    background-size: 50%;
+                    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+                }
+                    img:hover{
+                        width: 100%;
+                        height: 50%;
+                        -webkit-transform: rotateY(180deg);
+                    }
+                </style>
+                <br>
+                <img src="img/gapo.JPG" width="100%" height="50px" alt="" />
+					
+				<center>
+				<hr class="tagline-divider">
+                   <p>
+                       <small>Welcome to</small><h1>iGapo</h1>
+                    </p>
+                    <hr class="tagline-divider">
+                <p>developed by</p>
+				<p>Mary Grace L. Madriaga</p>
+				</center>
+            <br>
+            <hr class="tagline-divider">
+            <img src="img/apo.jpg" width="100%" height="50px" alt="" />
+					
+				<center>
+				<hr class="tagline-divider">
+                   <p>
+                     <h1>Facts</h1>
+                    </p>
+                    <hr class="tagline-divider">
+                <p>The City of Olongapo is a first class, highly urbanized city located in the province of Zambales in the Philippines. It is one of the 14 cities of Region III or the Central Luzon Region. Though it is geographically located in Zambales, Olangapo is an independent city which means that the provincial government has no political jurisdiction over the city.</p>
+				</center>
+			</div>
+         <br><br><br>
+
+		</div>
+		
+<!-- ************* PAGE TWO ************* -->
+		<!--Page-->
+		<div data-role="page" id="page2" data-theme="e">
+			<div data-role="header" data-theme="d" data-position="inline">
+				<h1 data-icon="info">iGapo</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#page1" data-icon="home" data-transition="none">Home</a></li>
+						<li><a href="#page2" data-icon="star" data-transition="none">Places</a></li>
+						<li><a href="#page3" data-icon="search" data-transition="none">Maps</a></li>
+						<li><a href="assets/about.html" data-icon="info" data-transition="none">About</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--Content-->
+			<div data-role="content" data-theme="c">
+			<center>
+				<h3>PARKS</h3>
+                <img src="img/marikit.jpg" width="100%" height="50%" alt="" />
+				<hr class="star-light">
+			</center>
+				<p>Ulo ng Apo Monument<br>
+				Marikit Park<br>
+				Oval<br>
+				Rizal Triangle<br>
+				Olongapo City Museum<br>
+				Gordon Heights Park<br>
+				Greenwoods Park</p>
+			<center>
+				<h3>FAST FOODS</h3>
+                <img src="img/mcdo.jpg" width="100%" height="50%" alt="" />
+				<hr class="star-light">
+			</center>
+				<p>Jollibee<br>
+				McDonalds<br>
+				ChicBoy<br>
+				Mang Inasal<br>
+				Greenwich<br>
+				Chowking</p>
+			<center>
+				<h3>BARS</h3>
+                <img src="img/bar.jpg" width="100%" height="50%" alt="" />
+				<hr class="star-light">
+			</center>
+			<p>Gigz Super Club<br>
+			Gigolo<br>
+			Ambyanz Nightlife<br>
+			Tropical Bay<br>
+			Apozaga Bar<br>
+			Willis Concert Bar</p>
+		</div>
+	</div>
+	
+<!-- ************* PAGE THREE ************* -->
+		<!--Page-->
+		<div data-role="page" id="page3" data-theme="e">
+			<div data-role="header" data-theme="d" data-position="inline">
+				<h1 data-icon="info">iGapo</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#page1" data-icon="home" data-transition="none">Home</a></li>
+						<li><a href="#page2" data-icon="star" data-transition="none">Places</a></li>
+						<li><a href="#page3" data-icon="search" data-transition="none">Maps</a></li>
+						<li><a href="assets/about.html" data-icon="info" data-transition="none">About</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--Content-->
+			<div data-role="content" background-color="pink" data-theme="c">
+				<div align="left-side">
+<input type="button" value="Parks" onclick="Parks()">
+<input type="button" value="Fast Foods" onclick="FastFoods()">
+<input type="button" value="Bars" onclick="Bars()"></br>
+			<p>Map Here:</p>
+			<div id="map_canvas" style="width:100%; height:300px"/></br>
+				</div>
+			</div>
+		</div>
+
+</body>
+</html>
